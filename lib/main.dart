@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_learn/data_type.dart';
+import 'package:my_flutter_learn/function_learn.dart';
+import 'package:my_flutter_learn/generic_learn.dart';
+import 'package:my_flutter_learn/opp_learn.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,6 +30,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+//    _oopLearn();
+    _functionLearn();
+    _genericLearn();
+    _skillLearn();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -34,10 +41,46 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ListView(
           children: <Widget>[
-            DataType()
+//            DataType()
           ],
         )
       ),
     );
   }
+
+  void _oopLearn() {
+      Logger log1 = Logger();
+      Logger log2 = Logger();
+      print(log1 == log2);
+
+      Student.doPrint('_opplearn');
+
+      Student stu1 = Student('清华', 'jack', 19);
+      stu1.school = '985';
+      print(stu1.toString());
+
+
+      Student stu2 = Student('北大', 'jacks', 19, city: 'sh', country: '中国');
+      stu2.school = '985';
+      print(stu2.toString());
+
+      StudyFlutter studyFlutter = StudyFlutter();
+      studyFlutter.study();
+  }
+
+  void _functionLearn() {
+    TestFunction testFunction = TestFunction();
+    testFunction.start();
+  }
+
+  void _genericLearn() {
+    TestGeneric testGeneric = TestGeneric();
+    testGeneric.start();
+  }
+
+  void _skillLearn() {
+//    main();
+  }
 }
+
+
