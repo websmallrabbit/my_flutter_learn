@@ -61,6 +61,34 @@ class _StateFullGroupState extends State<StateFullGroup> {
                               avatar: Icon(Icons.photo),
                               label: Text('StatelessWidget与基础组件'),
                             ),
+                            Row(
+                              children: <Widget>[
+                                ClipOval(
+                                  child: SizedBox(
+                                    child: Image.network(
+                                      'https://img2.sycdn.imooc.com/szimg/5c7e6835087ef3d806000338-360-202.jpg',
+                                      width: 100,
+                                      height: 100,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                child: Opacity(
+                                  opacity: 0.6,
+                                  child: Image.network(
+                                    'https://img2.sycdn.imooc.com/szimg/5c7e6835087ef3d806000338-360-202.jpg',
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                                ),
+                              ),
+                            ),
                             Divider(
                               height: 10,
                               indent: 10,
@@ -89,23 +117,61 @@ class _StateFullGroupState extends State<StateFullGroup> {
                             ),
                             TextField(
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                hintText: '请输入',
-                                hintStyle: TextStyle(fontSize: 15)
-                              ),
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                  hintText: '请输入',
+                                  hintStyle: TextStyle(fontSize: 15)),
+                            ),
+                            Column(
+                              children: <Widget>[
+                                FractionallySizedBox(
+                                  widthFactor: 1,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.greenAccent),
+                                    child: Text('宽度撑满'),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Stack(
+                              children: <Widget>[
+                                Image.network(
+                                  'https://img2.sycdn.imooc.com/szimg/5c7e6835087ef3d806000338-360-202.jpg',
+                                ),
+                                Positioned(
+                                  left: 0,
+                                  bottom: 0,
+                                  child: Image.network(
+                                    'https://img2.sycdn.imooc.com/szimg/5c7e6835087ef3d806000338-360-202.jpg',
+                                    width: 36,
+                                    height: 36,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Wrap(
+                              spacing: 8, // 水平间距
+                              runSpacing: 6, // 垂直间距
+                              children: <Widget>[_chip('Flutter')],
                             ),
                             Container(
-                              height: 100,
-                              margin: EdgeInsets.only(top: 10),
-                              decoration: BoxDecoration(color: Colors.lightBlueAccent),
-                              child: PageView(
-                                children: <Widget>[
-                                  _item('page1', Colors.deepPurple),
-                                  _item('page2', Colors.green),
-                                  _item('page3', Colors.orange),
-                                 ],
-                              ),
-                            )
+                                height: 100,
+                                margin: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    color: Colors.lightBlueAccent),
+                                child: PhysicalModel(
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(6),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: PageView(
+                                    children: <Widget>[
+                                      _item('page1', Colors.deepPurple),
+                                      _item('page2', Colors.green),
+                                      _item('page3', Colors.orange),
+                                    ],
+                                  ),
+                                ))
                           ],
                         ),
                       )
@@ -113,7 +179,19 @@ class _StateFullGroupState extends State<StateFullGroup> {
                   ),
                   onRefresh: _handleRefresh,
                 )
-              : Text('list')),
+              : Column(
+                  children: <Widget>[
+                    Text('列表'),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                        ),
+                        child: Text('拉伸填满高度'),
+                      ),
+                    )
+                  ],
+                )),
     );
   }
 
@@ -126,7 +204,23 @@ class _StateFullGroupState extends State<StateFullGroup> {
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(color: color),
-      child: Text(title, style: TextStyle(fontSize: 22, color: Colors.white),),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: 22, color: Colors.white),
+      ),
+    );
+  }
+
+  _chip(String label) {
+    return Chip(
+      label: Text(label),
+      avatar: CircleAvatar(
+        backgroundColor: Colors.blue.shade900,
+        child: Text(
+          label.substring(0, 1),
+          style: textStyle,
+        ),
+      ),
     );
   }
 }

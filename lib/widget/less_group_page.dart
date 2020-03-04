@@ -62,3 +62,17 @@ class LessGroupPage extends StatelessWidget {
   }
 
 }
+
+//Column(
+//children: <Widget>[
+//Text('列表'),
+//Expanded(
+//child: Container(
+//decoration: BoxDecoration(
+//color: Colors.red,
+//),
+//child: Text('拉伸填满高度'),
+//),
+//)
+//],
+//)
