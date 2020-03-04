@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_learn/data_type.dart';
 import 'package:my_flutter_learn/function_learn.dart';
 import 'package:my_flutter_learn/generic_learn.dart';
 import 'package:my_flutter_learn/opp_learn.dart';
+import 'package:my_flutter_learn/widget/statefull_group_page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(StateFullGroup());
 
 class MyApp extends StatelessWidget {
   @override
